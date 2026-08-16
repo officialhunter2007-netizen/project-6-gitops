@@ -29,6 +29,11 @@ jobs:
           pip install flake8
           flake8 app/app.py --max-line-length=120
 
+      - name: Run tests
+        run: |
+          pip install flask pytest
+          pytest app/test_app.py
+
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
