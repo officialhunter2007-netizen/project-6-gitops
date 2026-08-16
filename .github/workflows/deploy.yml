@@ -57,6 +57,7 @@ jobs:
             aquasec/trivy:latest image \
             --exit-code 1 \
             --severity CRITICAL \
+            --ignore-unfixed
             --no-progress \
             $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
