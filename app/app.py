@@ -3,6 +3,7 @@ import os
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def home():
     return jsonify({
@@ -11,9 +12,11 @@ def home():
         "engineer": "amr"
     })
 
+
 @app.route("/health")
 def health():
     return jsonify({"status": "healthy"}), 200
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
