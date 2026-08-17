@@ -1,7 +1,16 @@
 from flask import Flask, jsonify
 import os
+import boto3
+import json
+
 
 app = Flask(__name__)
+
+
+def get_secret():
+    client = boto3.client("secretsmanager", region_name=os.environ.get("AWS_REGION", "eu-west-1"))
+    response = client.get_secret_value(SecretId="project-6/app-secret")
+    return json.loads(response["SecretString"])
 
 
 @app.route("/")
