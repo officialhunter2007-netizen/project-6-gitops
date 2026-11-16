@@ -33,3 +33,8 @@ variable "desired_count" {
   type        = number
   default     = 1
 }
+
+variable "alert_email" {
+  description = "Email address subscribed to the CloudWatch alarm via SNS"
+  type        = string
+}

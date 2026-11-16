@@ -246,6 +246,7 @@ The ALB performs health checks against the `/health` endpoint every 30 seconds. 
 - Terraform >= 1.5.0
 - AWS CLI configured
 - Docker
+- A variable for the alert email: `terraform apply -var="alert_email=you@example.com"`
 
 ### Step 1 — Provision Infrastructure
 
@@ -258,7 +259,7 @@ terraform apply
 
 ### Step 2 — Configure GitHub Repository
 
-Update the `role-to-assume` ARN in `.github/workflows/deploy.yml` with the GitHub Actions role ARN from Terraform outputs. Update the `sub` condition in `iam.tf` with your repository's numeric owner and repository IDs.
+Add a repository secret named `ROLE_TO_ASSUME` containing the GitHub Actions role ARN from the Terraform outputs. Update the `sub` condition in `iam.tf` with your repository's numeric owner and repository IDs.
 
 ### Step 3 — Trigger First Deployment
 

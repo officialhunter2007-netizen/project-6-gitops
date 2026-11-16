@@ -14,7 +14,7 @@ resource "aws_sns_topic" "alerts" {
 resource "aws_sns_topic_subscription" "email" {
   topic_arn = aws_sns_topic.alerts.arn
   protocol  = "email"
-  endpoint  = "alerts@example.com"
+  endpoint  = var.alert_email
 }
 
 resource "aws_cloudwatch_metric_alarm" "unhealthy_hosts" {
